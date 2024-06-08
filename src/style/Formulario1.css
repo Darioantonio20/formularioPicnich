@@ -1,0 +1,96 @@
+/* src/style/Formulario1.css */
+  
+  .containercititito {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    color: #333;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  .description {
+    text-align: justify;
+    margin: 20px 0;
+    color: #555;
+  }
+  
+  .locations {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .locations li {
+    margin: 10px 0;
+  }
+  
+  .locations li::before {
+    content: '•';
+    color: #000;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+  
+  .form-group {
+    margin: 20px 0;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.5rem;
+  }
+  
+  .form-input, .form-select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .input {
+    font-family: "SF Pro";
+    width: 95%;
+    padding: 0.875rem;
+    font-size: 1.5rem;
+    border: 1.5px solid #000;
+    border-radius: 0.5rem;
+    box-shadow: 2.5px 3px 0 #000;
+    outline: none;
+    transition: ease 0.25s;
+  }
+  
+  .input:focus {
+    box-shadow: 5.5px 7px 0 black;
+  }
+  
