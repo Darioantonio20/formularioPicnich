@@ -11,9 +11,9 @@ function Formulario1() {
         const key = params.get('key');
 
         if (key === 'J2MoHjdjXdfG2yClBUw8') {
-            navigate('/app');
+            navigate(`/app/?key=${key}`);
         } else if (key) {
-            navigate('/app');
+            navigate(`/app/?key=${key}`);
         }
     }, [location, navigate]);
 
