@@ -11,9 +11,9 @@ function Formulario1() {
         const key = params.get('key');
 
         if (key === 'J2MoHjdjXdfG2yClBUw8') {
-            navigate('/registro-individual');
+            navigate('/app');
         } else if (key) {
-            navigate('/registro-grupal');
+            navigate('/app');
         }
     }, [location, navigate]);
 
