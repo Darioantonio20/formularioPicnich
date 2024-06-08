@@ -66,8 +66,8 @@ function Formulario1() {
                     <label className="form-label">Sede:</label>
                     <select className="input" name="sede" required>
                         <option value="Tuxtla Gtz">Tuxtla Gtz - 15 de junio</option>
-                        <option value="Tapachula">Tapachula - 22 de junio</option>
-                        <option value="Comitán">Comitán - 29 de junio</option>
+                        {/*<option value="Tapachula">Tapachula - 22 de junio</option>*/}
+                        {/*<option value="Comitán">Comitán - 29 de junio</option>*/}
                     </select>
                 </div>
                 <div className="form-group">
