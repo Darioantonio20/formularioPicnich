@@ -1,9 +1,21 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "./style/Formulario1.css";
 
 function Formulario1() {
+    const location = useLocation();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const key = params.get('key');
+
+        if (key === 'J2MoHjdjXdfG2yClBUw8') {
+            navigate('/registro-individual');
+        } else if (key) {
+            navigate('/registro-grupal');
+        }
+    }, [location, navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
