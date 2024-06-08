@@ -112,7 +112,7 @@ function Formulario1() {
                         de Chiapas.
                     </p>
                 </div>
-                <button className="form-button" type="submit">Registrarse</button>
+                <button className="form-button" type="submit">Enviar</button>
             </form>
         </div>
         </>

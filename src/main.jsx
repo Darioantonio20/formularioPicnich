@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import Formulario1 from './Formulario1.jsx';
+import RegistroGrupal from './RegistroGrupal.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -10,6 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/formulario1" element={<Formulario1 />} />
+        <Route path="/registro-grupal" element={<RegistroGrupal />} />
       </Routes>
     </Router>
   </React.StrictMode>,

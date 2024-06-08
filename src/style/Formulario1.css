@@ -52,6 +52,14 @@
     color: #333;
     font-size: 1.5rem;
   }
+
+  .form-labelcito {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 100;
+    color: #515151;
+    font-size: 1.5rem;
+  }
   
   .form-input, .form-select {
     width: 100%;
