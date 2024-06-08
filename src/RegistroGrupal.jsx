@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './style/Formulario1.css';
 
 function RegistroGrupal() {
@@ -19,14 +20,9 @@ function RegistroGrupal() {
     numAsistentes27a59mujer: '',
     numAsistentes60masmujer: '',
     numPersonasGrupo: '',
-    hombres: '',
-    mujeres: '',
     paisOrigen: '',
     estadoRadican: '',
     ciudadRadican: '',
-    paisOrigen: '',
-    estadoRadican: '',
-    ciudadRadican: ''
   });
 
   const estados = [
@@ -82,7 +78,7 @@ function RegistroGrupal() {
           </div>
           <div className="form-group">
             <label className="form-labelcito ">Número telefónico del responsable del grupo (opcional):</label>
-            <input className="input" type="tel" name="telefonoResponsable" value={formData.telefonoResponsable} onChange={handleChange} />
+            <input className="input" type="number" name="telefonoResponsable" value={formData.telefonoResponsable} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label className="form-labelcito ">Número de personas que forman el grupo (solo número):</label>
@@ -119,38 +115,39 @@ function RegistroGrupal() {
             <input className="input" placeholder='Mujer' type="number" name="numAsistentes60masmujer" value={formData.numAsistentes60masmujer} onChange={handleChange} required />
           </div>
           <div className="container">
-        <form className="registration-form">
-          <div className="form-group">
-            <label className="form-labelcito">País de origen:</label>
-            <select className="input" name="paisOrigen" value={formData.paisOrigen} onChange={handleChange} required>
-              <option value="">Seleccione su país</option>
-              {paises.map((pais, index) => (
-                <option key={index} value={pais}>{pais}</option>
-              ))}
-            </select>
+            <div className="form-group">
+              <label className="form-labelcito">País de origen:</label>
+              <select className="input" name="paisOrigen" value={formData.paisOrigen} onChange={handleChange} required>
+                <option value="">Seleccione su país</option>
+                {paises.map((pais, index) => (
+                  <option key={index} value={pais}>{pais}</option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label className="form-labelcito">Estado donde radican:</label>
+              <select className="input" name="estadoRadican" value={formData.estadoRadican} onChange={handleChange} required>
+                <option value="">Seleccione su estado</option>
+                {estados.map((estado, index) => (
+                  <option key={index} value={estado}>{estado}</option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label className="form-labelcito">Ciudad donde radican:</label>
+              <select className="input" name="ciudadRadican" value={formData.ciudadRadican} onChange={handleChange} required>
+                <option value="">Seleccione su ciudad</option>
+                {ciudades.map((ciudad, index) => (
+                  <option key={index} value={ciudad}>{ciudad}</option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="form-group">
-            <label className="form-labelcito">Estado donde radican:</label>
-            <select className="input" name="estadoRadican" value={formData.estadoRadican} onChange={handleChange} required>
-              <option value="">Seleccione su estado</option>
-              {estados.map((estado, index) => (
-                <option key={index} value={estado}>{estado}</option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label className="form-labelcito">Ciudad donde radican:</label>
-            <select className="input" name="ciudadRadican" value={formData.ciudadRadican} onChange={handleChange} required>
-              <option value="">Seleccione su ciudad</option>
-              {ciudades.map((ciudad, index) => (
-                <option key={index} value={ciudad}>{ciudad}</option>
-              ))}
-            </select>
-          </div>
-        </form>
-      </div>
-          <button className="form-button" type="submit">Enviar</button>
-        </form>
+            <button className="buttonJson" type="submit">Enviar</button>
+            <Link to="/">
+              <center><button className="buttonDelete">Regresar</button></center>
+            </Link>
+          </form>
       </div>
     </>
   );
