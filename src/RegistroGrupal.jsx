@@ -28,29 +28,6 @@ function RegistroGrupal() {
     Ciudad: '',
   });
 
-  const estados = [
-    "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", 
-    "Chihuahua", "Ciudad de México", "Coahuila", "Colima", "Durango", "Estado de México", 
-    "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "Michoacán", "Morelos", "Nayarit", 
-    "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", 
-    "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"
-  ];
-
-  const ciudades = [
-    "Ciudad de México", "Guadalajara", "Monterrey", "Puebla", "Toluca", "Tijuana", "León", 
-    "Ciudad Juárez", "Torreón", "San Luis Potosí", "Mérida", "Chihuahua", "Querétaro", 
-    "Aguascalientes", "Morelia", "Saltillo", "Hermosillo", "Mexicali", "Culiacán", 
-    "Villahermosa", "Cancún", "Veracruz", "Tuxtla Gutiérrez", "Reynosa", "Oaxaca", 
-    "Acapulco", "Durango", "Tepic", "Cuernavaca", "Chilpancingo", "Tlaxcala", "Zacatecas"
-  ];
-
-  const paises = [
-    "México", "Estados Unidos", "Canadá", "Guatemala", "El Salvador", "Honduras", "Nicaragua", 
-    "Costa Rica", "Panamá", "Colombia", "Venezuela", "Perú", "Brasil", "Argentina", "Chile", 
-    "Uruguay", "Paraguay", "Bolivia", "Ecuador", "España", "Francia", "Alemania", "Italia", 
-    "Reino Unido", "Japón", "China", "India", "Australia"
-  ];
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const key = searchParams.get('key');
@@ -108,11 +85,18 @@ function RegistroGrupal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await setDoc(doc(db, 'asistentes', key), formData, { merge: true });
-      console.log('Document successfully written!');
-    } catch (error) {
-      console.error('Error writing document:', error);
+    const allFieldsFilled = Object.values(formData).every(field => field !== '');
+
+    if (allFieldsFilled) {
+      try {
+        await setDoc(doc(db, 'asistentes', key), formData, { merge: true });
+        console.log('Document successfully written!');
+        alert('Formulario enviado correctamente.');
+      } catch (error) {
+        console.error('Error writing document:', error);
+      }
+    } else {
+      alert('Por favor, complete todos los campos antes de enviar.');
     }
   };
 
@@ -175,30 +159,15 @@ function RegistroGrupal() {
         <div className="container">
           <div className="form-group">
             <label className="form-labelcito">País de origen:</label>
-            <select className="input" name="Pais" value={formData.Pais} onChange={handleChange} required>
-              <option value="">Seleccione su país</option>
-              {paises.map((pais, index) => (
-                <option key={index} value={pais}>{pais}</option>
-              ))}
-            </select>
+            <input className="input" type="text" name="Pais" value={formData.Pais} onChange={handleChange} required />
           </div>
           <div className="form-group">
             <label className="form-labelcito">Estado donde radican:</label>
-            <select className="input" name="Estado" value={formData.Estado} onChange={handleChange} required>
-              <option value="">Seleccione su estado</option>
-              {estados.map((estado, index) => (
-                <option key={index} value={estado}>{estado}</option>
-              ))}
-            </select>
+            <input className="input" type="text" name="Estado" value={formData.Estado} onChange={handleChange} required />
           </div>
           <div className="form-group">
             <label className="form-labelcito">Ciudad donde radican:</label>
-            <select className="input" name="Ciudad" value={formData.Ciudad} onChange={handleChange} required>
-              <option value="">Seleccione su ciudad</option>
-              {ciudades.map((ciudad, index) => (
-                <option key={index} value={ciudad}>{ciudad}</option>
-              ))}
-            </select>
+            <input className="input" type="text" name="Ciudad" value={formData.Ciudad} onChange={handleChange} required />
           </div>
         </div>
         <button className="buttonJson" type="submit">Enviar</button>
