@@ -8,12 +8,17 @@ function RegistroIndividual() {
   const [formData, setFormData] = useState({
     Nombre: '',
     mail: '',
+    mail1: '',
     phone: '',
     Edad: '',
     sexo: '',
     Pais: '',
     Estado: '',
     Ciudad: '',
+    Tipo: '',
+    MarcaTemporal: '',
+    Sede: '',
+    enterado: '',
   });
 
   const location = useLocation();
@@ -40,6 +45,11 @@ function RegistroIndividual() {
               Pais: data['Pais'] || '',
               Estado: data['Estado'] || '',
               Ciudad: data['Ciudad'] || '',
+              Tipo: data['Tipo'] || '',
+              MarcaTemporal: data['Marca temporal'] || '',
+              mail1: data['mail.1'] || '',
+              Sede: data['Sede'] || '',
+              enterado: data['enterado'] || '',
             });
           } else {
             console.error('No such document!');
@@ -122,6 +132,18 @@ function RegistroIndividual() {
           <div className="form-group">
             <label className="form-labelcito">Ciudad donde radican:</label>
             <input className="input" type="text" name="Ciudad" value={formData.Ciudad} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="form-labelcito">Tipo:</label>
+            <input className="input" type="text" name="Tipo" value={formData.Tipo} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="form-labelcito">Sede:</label>
+            <input className="input" type="text" name="Sede" value={formData.Sede} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="form-labelcito">Enterado:</label>
+            <input className="input" type="text" name="enterado" value={formData.enterado} onChange={handleChange} required />
           </div>
         </div>
         <button className="buttonJson" type="submit">Enviar</button>

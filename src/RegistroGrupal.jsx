@@ -26,6 +26,11 @@ function RegistroGrupal() {
     Pais: '',
     Estado: '',
     Ciudad: '',
+    Tipo: '',
+    MarcaTemporal: '',
+    Sede: '',
+    enterado: '',
+    mail2: '',
   });
 
   const location = useLocation();
@@ -63,6 +68,12 @@ function RegistroGrupal() {
               Pais: data['Pais.1'] || '',
               Estado: data['Estado.1'] || '',
               Ciudad: data['Ciudad.1'] || '',
+              Tipo: data['Tipo'] || '',
+              MarcaTemporal: data['Marca temporal'] || '',
+              Sede: data['Sede'] || '',
+              enterado: data['enterado'] || '',
+              mail2: data['mail.2'] || '',
+
             });
           } else {
             console.error('No such document!');
@@ -168,6 +179,18 @@ function RegistroGrupal() {
           <div className="form-group">
             <label className="form-labelcito">Ciudad donde radican:</label>
             <input className="input" type="text" name="Ciudad" value={formData.Ciudad} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="form-labelcito">Tipo:</label>
+            <input className="input" type="text" name="Tipo" value={formData.Tipo} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="form-labelcito">Sede:</label>
+            <input className="input" type="text" name="Sede" value={formData.Sede} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="form-labelcito">Enterado:</label>
+            <input className="input" type="text" name="enterado" value={formData.enterado} onChange={handleChange} required />
           </div>
         </div>
         <button className="buttonJson" type="submit">Enviar</button>
