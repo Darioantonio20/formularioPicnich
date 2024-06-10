@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { db } from './firebaseConfig';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import Swal from 'sweetalert2';
 import './style/Formulario1.css';
 
 function RegistroIndividual() {
@@ -78,12 +79,26 @@ function RegistroIndividual() {
       try {
         await setDoc(doc(db, 'asistentes', key), formData, { merge: true });
         console.log('Document successfully written!');
-        alert('Formulario enviado correctamente.');
+        Swal.fire({
+          icon: 'success',
+          title: 'Formulario enviado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
       } catch (error) {
         console.error('Error writing document:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error al enviar el formulario. Por favor, inténtelo de nuevo.',
+        });
       }
     } else {
-      alert('Por favor, complete todos los campos antes de enviar.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Campos incompletos',
+        text: 'Por favor, complete todos los campos antes de enviar.',
+      });
     }
   };
 
@@ -112,39 +127,37 @@ function RegistroIndividual() {
           <input className="input" type="number" name="Edad" value={formData.Edad} onChange={handleChange} required />
         </div>
         <div className="form-group">
-          <label className="form-labelcito ">Autodescripción sexogenérica con la que se identifica:</label><br></br>
+          <label className="form-labelcito ">Autodescripción sexogenérica con la que se identifica:</label><br />
           <input type="radio" name="sexo" value="Hombre" checked={formData.sexo === 'Hombre'} onChange={handleChange} />
-          <label className="description">Hombre</label><br></br><br></br>
+          <label className="description">Hombre</label><br /><br />
           <input type="radio" name="sexo" value="Mujer" checked={formData.sexo === 'Mujer'} onChange={handleChange} />
-          <label className="description">Mujer</label><br></br><br></br>
+          <label className="description">Mujer</label><br /><br />
           <input type="radio" name="sexo" value="PrefieroNoDecirlo" checked={formData.sexo === 'PrefieroNoDecirlo'} onChange={handleChange} />
           <label className="description">Prefiero no decirlo</label>
         </div>
-        <div className="container">
-          <div className="form-group">
-            <label className="form-labelcito">País de origen:</label>
-            <input className="input" type="text" name="Pais" value={formData.Pais} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label className="form-labelcito">Estado donde radican:</label>
-            <input className="input" type="text" name="Estado" value={formData.Estado} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label className="form-labelcito">Ciudad donde radican:</label>
-            <input className="input" type="text" name="Ciudad" value={formData.Ciudad} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label className="form-labelcito">Tipo:</label>
-            <input className="input" type="text" name="Tipo" value={formData.Tipo} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label className="form-labelcito">Sede:</label>
-            <input className="input" type="text" name="Sede" value={formData.Sede} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label className="form-labelcito">Enterado:</label>
-            <input className="input" type="text" name="enterado" value={formData.enterado} onChange={handleChange} required />
-          </div>
+        <div className="form-group">
+          <label className="form-labelcito">País de origen:</label>
+          <input className="input" type="text" name="Pais" value={formData.Pais} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label className="form-labelcito">Estado donde radican:</label>
+          <input className="input" type="text" name="Estado" value={formData.Estado} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label className="form-labelcito">Ciudad donde radican:</label>
+          <input className="input" type="text" name="Ciudad" value={formData.Ciudad} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label className="form-labelcito">Tipo:</label>
+          <input className="input" type="text" name="Tipo" value={formData.Tipo} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label className="form-labelcito">Sede:</label>
+          <input className="input" type="text" name="Sede" value={formData.Sede} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label className="form-labelcito">Enterado:</label>
+          <input className="input" type="text" name="enterado" value={formData.enterado} onChange={handleChange} required />
         </div>
         <button className="buttonJson" type="submit">Enviar</button>
       </form>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { db } from './firebaseConfig';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import Swal from 'sweetalert2';
 import './style/Formulario1.css';
 import './style/App.css';
 
@@ -41,13 +42,13 @@ function RegistroGrupal() {
     const fetchDocument = async () => {
       try {
         if (key) {
-          console.log('Key found in URL:', key); // Debugging
+          console.log('Key found in URL:', key);
           const docRef = doc(db, 'registrados', key);
           const docSnap = await getDoc(docRef);
           
           if (docSnap.exists()) {
             const data = docSnap.data();
-            console.log('Document data:', data); // Debugging
+            console.log('Document data:', data);
             setFormData({
               Nombre: data['Nombre.1'] || '',
               mail: data['mail'] || '',
@@ -73,7 +74,6 @@ function RegistroGrupal() {
               Sede: data['Sede'] || '',
               enterado: data['enterado'] || '',
               mail2: data['mail.2'] || '',
-
             });
           } else {
             console.error('No such document!');
@@ -102,12 +102,26 @@ function RegistroGrupal() {
       try {
         await setDoc(doc(db, 'asistentes', key), formData, { merge: true });
         console.log('Document successfully written!');
-        alert('Formulario enviado correctamente.');
+        Swal.fire({
+          icon: 'success',
+          title: 'Formulario enviado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
       } catch (error) {
         console.error('Error writing document:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error al enviar el formulario. Por favor, inténtelo de nuevo.',
+        });
       }
     } else {
-      alert('Por favor, complete todos los campos antes de enviar.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Campos incompletos',
+        text: 'Por favor, complete todos los campos antes de enviar.',
+      });
     }
   };
 
@@ -167,7 +181,6 @@ function RegistroGrupal() {
           <input className="input" placeholder='Hombre' type="number" name="Hombres_60" value={formData.Hombres_60} onChange={handleChange} required />
           <input className="input" placeholder='Mujer' type="number" name="Mujeres_60" value={formData.Mujeres_60} onChange={handleChange} required />
         </div>
-        <div className="container">
           <div className="form-group">
             <label className="form-labelcito">País de origen:</label>
             <input className="input" type="text" name="Pais" value={formData.Pais} onChange={handleChange} required />
@@ -192,7 +205,6 @@ function RegistroGrupal() {
             <label className="form-labelcito">Enterado:</label>
             <input className="input" type="text" name="enterado" value={formData.enterado} onChange={handleChange} required />
           </div>
-        </div>
         <button className="buttonJson" type="submit">Enviar</button>
       </form>
     </div>
