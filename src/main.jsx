@@ -16,7 +16,7 @@ function App() {
   } else if (tipo === 'Grupal' || tipo === 'Grupal Escolar' || tipo === 'Familiar') {
     return <Navigate to={`/registro-grupal?key=${key}`} />;
   } else {
-    return <div>Tipo no especificado o no válido</div>;
+    return <Navigate to="/conteo" />;
   }
 }
 
@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/registro-grupal" element={<RegistroGrupal />} />
         <Route path="/registro-individual" element={<RegistroIndividual />} />
-        <Route path="/conteo" element={<Conteo/>} />
+        <Route path="/conteo" element={<Conteo />} />
       </Routes>
     </Router>
   </React.StrictMode>,
