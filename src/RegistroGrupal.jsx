@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { db } from './firebaseConfig';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
@@ -37,6 +37,7 @@ function RegistroGrupal() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const key = searchParams.get('key');
+  const navigate = useNavigate();  // Añadido useNavigate
 
   useEffect(() => {
     const fetchDocument = async () => {
@@ -107,6 +108,8 @@ function RegistroGrupal() {
           title: 'Formulario enviado correctamente',
           showConfirmButton: false,
           timer: 1500
+        }).then(() => {
+          navigate('/conteo');  // Redirigir a la vista de /conteo
         });
       } catch (error) {
         console.error('Error writing document:', error);
@@ -124,6 +127,7 @@ function RegistroGrupal() {
       });
     }
   };
+
 
   return (
     <div className="containercititito">
