@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import RegistroGrupal from './RegistroGrupal.jsx';
 import RegistroIndividual from './RegistroIndividual.jsx';
+import Conteo from './Conteo.jsx';
 
 function App() {
   const location = useLocation();
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/registro-grupal" element={<RegistroGrupal />} />
         <Route path="/registro-individual" element={<RegistroIndividual />} />
+        <Route path="/conteo" element={<Conteo/>} />
       </Routes>
     </Router>
   </React.StrictMode>,

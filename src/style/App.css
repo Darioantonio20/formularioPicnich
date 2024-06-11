@@ -201,3 +201,33 @@ h2 a {
 .buttonDelete:hover {
   background-color: #672222;
 }
+
+.titlecititito {
+  font-size: 3em;
+  text-align: center;
+  margin-top: 20px;
+  color: #323131;
+  font-weight: 300;
+}
+
+.conteo-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.conteo-table th, .conteo-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.conteo-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.conteo-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
