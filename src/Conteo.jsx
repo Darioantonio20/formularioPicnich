@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { collection, getDocs, query, where, doc, setDoc, getDoc } from 'firebase/firestore';
-import { db } from './firebaseConfig'; 
-import './style/App.css';
+import { collection, getDocs, query, where, doc, setDoc } from 'firebase/firestore';
+import { db } from './firebaseConfig';
+import './style/Conteo.css';
 
 function Conteo() {
     const [data, setData] = useState({});
